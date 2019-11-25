@@ -1,6 +1,6 @@
 # Git Cookbook
 
-
+### Remote repos
 Remove tracking/pushing/pulling from a remote repo
 ```
 git remote rm {name}
