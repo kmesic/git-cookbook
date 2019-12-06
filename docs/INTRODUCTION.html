@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded affix "><a href="INTRODUCTION.html" class="active">Introdution</a></li><li class="expanded "><a href="CHEATSHEET.html"><strong aria-hidden="true">1.</strong> Git Cheatsheet</a></li><li><ol class="section"><li class="expanded "><a href="CMD_REMOTE.html"><strong aria-hidden="true">1.1.</strong> Remote Repos</a></li><li class="expanded "><a href="CMD_BRANCHES.html"><strong aria-hidden="true">1.2.</strong> Branches</a></li></ol></li><li class="expanded "><a href="ARCHITECTURE.html"><strong aria-hidden="true">2.</strong> How Git Works</a></li></ol>
+                <ol class="chapter"><li class="expanded affix "><a href="INTRODUCTION.html" class="active">Introdution</a></li><li class="expanded "><a href="CHEATSHEET.html"><strong aria-hidden="true">1.</strong> Git Cheatsheet</a></li><li class="expanded "><a href="ARCHITECTURE.html"><strong aria-hidden="true">2.</strong> How Git Works</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -179,21 +179,6 @@
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

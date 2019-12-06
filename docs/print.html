@@ -83,7 +83,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div id="sidebar-scrollbox" class="sidebar-scrollbox">
-                <ol class="chapter"><li class="expanded affix "><a href="INTRODUCTION.html">Introdution</a></li><li class="expanded "><a href="CHEATSHEET.html"><strong aria-hidden="true">1.</strong> Git Cheatsheet</a></li><li><ol class="section"><li class="expanded "><a href="CMD_REMOTE.html"><strong aria-hidden="true">1.1.</strong> Remote Repos</a></li><li class="expanded "><a href="CMD_BRANCHES.html"><strong aria-hidden="true">1.2.</strong> Branches</a></li></ol></li><li class="expanded "><a href="ARCHITECTURE.html"><strong aria-hidden="true">2.</strong> How Git Works</a></li></ol>
+                <ol class="chapter"><li class="expanded affix "><a href="INTRODUCTION.html">Introdution</a></li><li class="expanded "><a href="CHEATSHEET.html"><strong aria-hidden="true">1.</strong> Git Cheatsheet</a></li><li class="expanded "><a href="ARCHITECTURE.html"><strong aria-hidden="true">2.</strong> How Git Works</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -152,6 +152,8 @@
                     <main>
                         <h1><a class="header" href="#introdution" id="introdution">Introdution</a></h1>
 <h1><a class="header" href="#git-cheatsheet" id="git-cheatsheet">GIT CHEATSHEET</a></h1>
+<p>Basic commands to work with Git, along more complex flows and situations.</p>
+<p><strong>Some of the examples have --- between lines. This indicates that everything above the line is the command structure, while everything below is an example</strong></p>
 <h2><a class="header" href="#basics" id="basics">Basics</a></h2>
 <p>Clone a repo</p>
 <pre><code>git clone {repo_https_or_ssh_url}
@@ -159,31 +161,67 @@ git clone https://github.com/username/repo-to-clone
 </code></pre>
 <p>Add to staging area</p>
 <pre><code>git add {file_name_or_directory}
+---
 git add test_file
 </code></pre>
 <p>Commit</p>
 <pre><code>git commit -m &quot;Message about commit&quot;
 </code></pre>
+<h2><a class="header" href="#branches" id="branches">Branches</a></h2>
+<p>View current branches locally. Current branch will be marked with a <code>*</code></p>
+<pre><code>git branch
+</code></pre>
+<p>View all remote branches fetched locally.</p>
+<pre><code>git branch -r
+</code></pre>
+<p>View all branches (local and remote)</p>
+<pre><code>git branch -a
+</code></pre>
+<p><em>Note: Remote branches must be fetched first to be seen</em></p>
+<p>Create a new local branch</p>
+<pre><code>git branch {branch_name}
+git checkout {branch_name}
+---
+git branch new_branch
+git checkout new_branch
+</code></pre>
+<p>Shorthand</p>
+<pre><code>git checkout -b {branch_name}
+</code></pre>
 <h2><a class="header" href="#remote-repos" id="remote-repos">Remote Repos</a></h2>
 <p>Conventions: </p>
 <ul>
-<li>origin is your root remote repo</li>
-<li>upstream is the repo you forked from</li>
+<li><strong>origin</strong> is your root remote repo</li>
+<li><strong>upstream</strong> is the repo you forked from</li>
 </ul>
-<p>Add tracking/pushing/pulling from a remote repo</p>
+<h3><a class="header" href="#basics-1" id="basics-1">Basics</a></h3>
+<p>Be able to fetch/push/pull from a remote repo</p>
 <pre><code>git remote add {name} {repo_https_or_ssh_url}
+---
 git remote add origin https://github.com/username/repo-to-clone
 </code></pre>
-<p>Remove tracking/pushing/pulling from a remote repo</p>
+<p>Remove a remote repo</p>
 <pre><code>git remote rm {name}
+---
 git remote rm origin
 </code></pre>
-<h2><a class="header" href="#branches" id="branches">Branches</a></h2>
-<h1><a class="header" href="#remote-repos-1" id="remote-repos-1">Remote Repos</a></h1>
-<h1><a class="header" href="#branches-1" id="branches-1">Branches</a></h1>
-<p>Remove tracking/pushing/pulling from a remote repo</p>
-<pre><code>git remote rm {name}
-git remote rm origin
+<p>Push to a remote repo</p>
+<pre><code>git push {remote_repo} {local_branch}
+</code></pre>
+<h3><a class="header" href="#keeping-a-forked-repo-up-to-date-with-original-repo" id="keeping-a-forked-repo-up-to-date-with-original-repo">Keeping a forked repo up to date with original repo</a></h3>
+<ol>
+<li>Add another remote branch to pull from</li>
+<li>Fetch remote branch into a local branch</li>
+<li>Merge the remote branch into a local branch</li>
+</ol>
+<pre><code>git clone {forked-repo-url}
+cd forked-repo
+git remote add upstream git://github.com/ORIGINAL-DEV-USERNAME/REPO-YOU-FORKED-FROM.git
+git pull upstream master
+</code></pre>
+<p>git pull is the same as doing a fetch and merge</p>
+<pre><code>git fetch upstream
+git merge upstream/master master
 </code></pre>
 <h1><a class="header" href="#how-git-works" id="how-git-works">How Git Works</a></h1>
 
@@ -208,21 +246,6 @@ git remote rm origin
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
