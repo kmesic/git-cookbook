@@ -153,8 +153,11 @@
                         <h1><a class="header" href="#introdution" id="introdution">Introdution</a></h1>
 <h1><a class="header" href="#git-cheatsheet" id="git-cheatsheet">GIT CHEATSHEET</a></h1>
 <p>Basic commands to work with Git, along more complex flows and situations.</p>
-<p><strong>Some of the examples have --- between lines. This indicates that everything above the line is the command structure, while everything below is an example</strong></p>
+<p><strong>Some of the examples have --- between lines. This indicates that everything above the line is the command syntax, while everything below is an example</strong></p>
 <h2><a class="header" href="#basics" id="basics">Basics</a></h2>
+<p>Initialize an empty Git repo</p>
+<pre><code>git init
+</code></pre>
 <p>Clone a repo</p>
 <pre><code>git clone {repo_https_or_ssh_url}
 git clone https://github.com/username/repo-to-clone
@@ -188,6 +191,9 @@ git checkout new_branch
 <p>Shorthand</p>
 <pre><code>git checkout -b {branch_name}
 </code></pre>
+<p>Change branches</p>
+<pre><code>git checkout {branch_name}
+</code></pre>
 <h2><a class="header" href="#remote-repos" id="remote-repos">Remote Repos</a></h2>
 <p>Conventions: </p>
 <ul>
@@ -206,8 +212,25 @@ git remote add origin https://github.com/username/repo-to-clone
 git remote rm origin
 </code></pre>
 <p>Push to a remote repo</p>
-<pre><code>git push {remote_repo} {local_branch}
+<pre><code>git push {remote_repo} {local_branch}:{remote_branch}
+---
+git push origin master:remote_master_name
+git push origin master
 </code></pre>
+<p><em>If you don't specify a remote_branch, git will just use the same name as the local branch</em></p>
+<p>Add -u to push to automatically track the branch</p>
+<pre><code>git push -u origin master
+--- After this command, when on master no need to specify remote repo ---
+git push
+git pull 
+</code></pre>
+<p>Pull from a remote repo</p>
+<pre><code>git pull {remote_repo} {remote_branch}:{local_branch}
+---
+git pull origin dev:local_branch_name
+git pull origin dev
+</code></pre>
+<p><em>If you don't specify a remote_branch, git will just use the same name as the local branch</em></p>
 <h3><a class="header" href="#keeping-a-forked-repo-up-to-date-with-original-repo" id="keeping-a-forked-repo-up-to-date-with-original-repo">Keeping a forked repo up to date with original repo</a></h3>
 <ol>
 <li>Add another remote branch to pull from</li>
@@ -223,6 +246,10 @@ git pull upstream master
 <pre><code>git fetch upstream
 git merge upstream/master master
 </code></pre>
+<h2><a class="header" href="#rebase-and-merge" id="rebase-and-merge">Rebase and Merge</a></h2>
+<h2><a class="header" href="#undo" id="undo">Undo</a></h2>
+<h2><a class="header" href="#history" id="history">History</a></h2>
+<h2><a class="header" href="#stash" id="stash">Stash</a></h2>
 <h1><a class="header" href="#how-git-works" id="how-git-works">How Git Works</a></h1>
 
                     </main>
