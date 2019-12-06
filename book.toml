@@ -1,0 +1,14 @@
+[book]
+authors = ["Kenan Mesic"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Git Cookbook"
+
+[build]
+build-dir = "docs"
+
+[output.html]
+default-theme = "navy"
+git-respository-url = "https://github.com/kmesic/git-cookbook"
+git-respository-icon = "fa-github"
