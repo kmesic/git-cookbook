@@ -16,7 +16,7 @@ This project was built with [mdbook](https://github.com/rust-lang/mdBook)
 
 ## How to contribute
 
-I encourage all contributions! :rocket: :ship: :airplane:
+I encourage all contributions! :rocket::rocket::rocket:
 
 1. Decide if you plan on making a large contribution or a small one (read below if confused)
 2. If large contribution, file an issue
