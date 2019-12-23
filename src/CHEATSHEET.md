@@ -126,9 +126,149 @@ git fetch upstream
 git merge upstream/master master
 ```
 ## Rebase and Merge
+Merge branch into current branch on
+```
+git merge {branch_to_merge_into_current_branch}
 
-## Undo
+--- Currently on master branch ---
+
+git merge feature_branch
+
+--- Merges feature branch into master branch ---
+
+```
+
+Rebase current branch into desired branch
+```
+git rebase {branch_to_put_on_top_off}
+
+--- Currently on feature branch ---
+git rebase master
+
+--- Replays commits from feature branch on top of master ---
+```
+
+Rebase interactive mode -- allow to combine, edit, delete commits in current branch
+
+```
+git rebase -i master
+```
+
+Sync current changes with what is happening on remote branch
+```
+git fetch
+git checkout {local-branch}
+git rebase origin/master
+```
 
 ## History
+View log of commits - Most recent commits appear first
+```
+git log
+```
+
+Limit number of commits shown
+```
+git log -{number}
+
+---
+
+git log -2
+
+-- Show only the 2 most recent commits ---
+```
+
+Show the differences in each commit (what was added)
+
+```
+git log -p
+```
+
+Show each commit as one line
+```
+git log --pretty=oneline
+```
+
+Show the commit history as a graph
+```
+git log --graph
+-- Easier to read when log lines are one line ---
+
+git log --pretty=oneline --graph
+
+```
 
 ## Stash
+Stash changes for later use
+```
+git stash
+```
+
+Reapply your changes somewhere else and remove from stash
+```
+git stash pop
+```
+
+Reapply your changes, but don't remove from stash
+```
+git stash apply
+```
+
+Stash untracked files
+```
+git stash -u 
+```
+
+Stash all files (untracked and ignored)
+```
+git stash -a
+```
+
+Add description of current stash changes
+```
+git stash save "Description of changes"
+```
+
+List all changes in the stash
+```
+git stash list
+```
+
+Apply a specific change from the stash using the identifier
+```
+git stash list
+--- Output ---
+stash@{0}: WIP on master: edd68f3 Added rockets
+stash@{1}: WIP on master: edd68f3 Added rockets
+
+--- Only apply stash changes for @{1} ---
+git stash pop stash@{1}
+```
+
+View summary of stash changes
+```
+git stash show
+```
+
+View full diff of stash changes
+```
+git stash show -p
+```
+
+Drop a stash
+```
+git stash drop stash@{identifier}
+
+---
+
+git stash drop stash@{1}
+```
+Delete all stashes
+```
+git stash clear
+```
+
+
+
+
+

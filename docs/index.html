@@ -148,7 +148,10 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1><a class="header" href="#introdution" id="introdution">Introdution</a></h1>
+                        <p><img src="./git-logo.png" alt="Git" /></p>
+<p>This is cookbook for a cheatsheet of various git workflows and commands. It's also a place where you can learn how git really works.</p>
+<p>The <a href="https://github.com/kmesic/git-cookbook">project</a> was written and is maintained by Kenan Mesic. I accept all contributions! Please visit the <a href="https://github.com/kmesic/git-cookbook">project</a> on Github to find out more about contributing!</p>
+<p>Click on the navigation bar on the right to start learning git!</p>
 
                     </main>
 
@@ -179,6 +182,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

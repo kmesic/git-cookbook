@@ -244,9 +244,105 @@ git pull upstream master
 git merge upstream/master master
 </code></pre>
 <h2><a class="header" href="#rebase-and-merge" id="rebase-and-merge">Rebase and Merge</a></h2>
-<h2><a class="header" href="#undo" id="undo">Undo</a></h2>
+<p>Merge branch into current branch on</p>
+<pre><code>git merge {branch_to_merge_into_current_branch}
+
+--- Currently on master branch ---
+
+git merge feature_branch
+
+--- Merges feature branch into master branch ---
+
+</code></pre>
+<p>Rebase current branch into desired branch</p>
+<pre><code>git rebase {branch_to_put_on_top_off}
+
+--- Currently on feature branch ---
+git rebase master
+
+--- Replays commits from feature branch on top of master ---
+</code></pre>
+<p>Rebase interactive mode -- allow to combine, edit, delete commits in current branch</p>
+<pre><code>git rebase -i master
+</code></pre>
+<p>Sync current changes with what is happening on remote branch</p>
+<pre><code>git fetch
+git checkout {local-branch}
+git rebase origin/master
+</code></pre>
 <h2><a class="header" href="#history" id="history">History</a></h2>
+<p>View log of commits - Most recent commits appear first</p>
+<pre><code>git log
+</code></pre>
+<p>Limit number of commits shown</p>
+<pre><code>git log -{number}
+
+---
+
+git log -2
+
+-- Show only the 2 most recent commits ---
+</code></pre>
+<p>Show the differences in each commit (what was added)</p>
+<pre><code>git log -p
+</code></pre>
+<p>Show each commit as one line</p>
+<pre><code>git log --pretty=oneline
+</code></pre>
+<p>Show the commit history as a graph</p>
+<pre><code>git log --graph
+-- Easier to read when log lines are one line ---
+
+git log --pretty=oneline --graph
+
+</code></pre>
 <h2><a class="header" href="#stash" id="stash">Stash</a></h2>
+<p>Stash changes for later use</p>
+<pre><code>git stash
+</code></pre>
+<p>Reapply your changes somewhere else and remove from stash</p>
+<pre><code>git stash pop
+</code></pre>
+<p>Reapply your changes, but don't remove from stash</p>
+<pre><code>git stash apply
+</code></pre>
+<p>Stash untracked files</p>
+<pre><code>git stash -u 
+</code></pre>
+<p>Stash all files (untracked and ignored)</p>
+<pre><code>git stash -a
+</code></pre>
+<p>Add description of current stash changes</p>
+<pre><code>git stash save &quot;Description of changes&quot;
+</code></pre>
+<p>List all changes in the stash</p>
+<pre><code>git stash list
+</code></pre>
+<p>Apply a specific change from the stash using the identifier</p>
+<pre><code>git stash list
+--- Output ---
+stash@{0}: WIP on master: edd68f3 Added rockets
+stash@{1}: WIP on master: edd68f3 Added rockets
+
+--- Only apply stash changes for @{1} ---
+git stash pop stash@{1}
+</code></pre>
+<p>View summary of stash changes</p>
+<pre><code>git stash show
+</code></pre>
+<p>View full diff of stash changes</p>
+<pre><code>git stash show -p
+</code></pre>
+<p>Drop a stash</p>
+<pre><code>git stash drop stash@{identifier}
+
+---
+
+git stash drop stash@{1}
+</code></pre>
+<p>Delete all stashes</p>
+<pre><code>git stash clear
+</code></pre>
 
                     </main>
 
@@ -285,6 +381,21 @@ git merge upstream/master master
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
