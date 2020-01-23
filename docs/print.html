@@ -249,6 +249,12 @@ git pull upstream master
 <pre><code>git fetch upstream
 git merge upstream/master master
 </code></pre>
+<h3><a class="header" href="#force-forked-repo-to-mirror-the-parent-repo" id="force-forked-repo-to-mirror-the-parent-repo">Force forked repo to mirror the parent repo</a></h3>
+<pre><code>git fetch upstream
+git checkout master
+git reset --hard upstream/master  
+git push origin master --force
+</code></pre>
 <h2><a class="header" href="#rebase-and-merge" id="rebase-and-merge">Rebase and Merge</a></h2>
 <p>Merge branch into current branch on</p>
 <pre><code>git merge {branch_to_merge_into_current_branch}
@@ -372,21 +378,6 @@ git stash drop stash@{1}
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         

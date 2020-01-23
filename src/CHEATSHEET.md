@@ -125,6 +125,15 @@ git pull is the same as doing a fetch and merge
 git fetch upstream
 git merge upstream/master master
 ```
+
+### Force forked repo to mirror the parent repo
+```
+git fetch upstream
+git checkout master
+git reset --hard upstream/master  
+git push origin master --force
+```
+
 ## Rebase and Merge
 Merge branch into current branch on
 ```
